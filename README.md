@@ -15,7 +15,7 @@ Files built for the Band 8 (`HWHD07`) also install on Band 10 — confirmed with
 | `tools/hwt.py` | Validator. `check <file>` / `selftest`. |
 | `dist/band10-terminal.hwt` | First working face. |
 | `dist/variants/` | 11 variants, preview PNGs, contact sheet. `band10-carbon-new.hwt` is the one in daily use. |
-| `tools/gadgetbridge-0.95.1.apk` | Installer app (F-Droid build). Safe to delete after use. |
+| `tools/gadgetbridge-0.95.1.apk` | Installer app, F-Droid developer-signed build. See [Gadgetbridge](#gadgetbridge) for source and newer versions. |
 
 Commands:
 
@@ -190,3 +190,41 @@ changes nothing on the wire.
 - Resource numbering is fixed: `002` background, `003–012` large digits,
   `013–022` medium digits, `023–029` weekdays, `030–041` months, `042–052` filler,
   `053` blank, `054` sign.
+
+## Gadgetbridge
+
+`tools/gadgetbridge-0.95.1.apk` is the F-Droid developer-signed build, redistributed
+here unmodified. Its original filename is
+`nodomain.freeyourgadget.gadgetbridge_255_01cce93.apk` (versionCode 255).
+
+Gadgetbridge is developed by the Freeyourgadget project and contributors.
+Copyright belongs to them; it is licensed under **AGPL-3.0**, so any modified
+version must be published under the same terms.
+
+- Source (canonical): <https://codeberg.org/Freeyourgadget/Gadgetbridge>
+- Releases and nightly builds: <https://codeberg.org/Freeyourgadget/Gadgetbridge/releases>
+- F-Droid page (download link, upstream for updates):
+  <https://f-droid.org/packages/nodomain.freeyourgadget.gadgetbridge/>
+- Documentation: <https://gadgetbridge.org/>
+
+Check F-Droid or Codeberg for newer builds. The F-Droid-signed APK and the
+developer-signed APK carry different signatures and cannot be installed over each
+other — switching requires uninstalling first, which also deletes Gadgetbridge's
+local data.
+
+Do not use the Play Store listing or APK mirror sites; they are not upstream.
+
+## References
+
+The binary format was reconstructed from these public sources:
+
+- <https://github.com/menezesx2k26-byte/lab-band8-kanagawa-watchface> — working
+  `HWHD07` face and its builder. Source of the header layout, FAT, RLE image codec
+  and the `TemplateWatch2` field numbers used here.
+- <https://github.com/Kuberwastaken/Huawhoop> — Band 10 protocol work, watchface
+  inventory and the `HWHD07` → `368*194` mapping.
+- <https://github.com/leeorichi/huawei-watch-face-maker> — early extractor that
+  documented the image container layout.
+- <https://gadgetbridge.org/basics/pairing/huawei-honor-pairing/> — the account-ID
+  pairing procedure, including the rule that the band must not be unpaired from the
+  vendor app.
